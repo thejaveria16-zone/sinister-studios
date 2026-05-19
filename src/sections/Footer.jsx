@@ -1,11 +1,25 @@
 import { motion } from 'framer-motion'
-import Logo from '../components/Logo'
+import logoImg from '../assets/logo/sinister-logo.png'
 
 export default function Footer() {
   return (
     <footer className="relative bg-matte-black border-t border-soft-white/10 py-12 px-6 md:px-10 overflow-hidden">
       <div className="max-w-7xl mx-auto">
-        {/* Massive watermark */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.9 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 1.2 }}
+          className="flex justify-center mb-8"
+        >
+          <img
+            src={logoImg}
+            alt="Sinister Studios"
+            className="w-32 md:w-40 object-contain"
+            style={{ filter: 'drop-shadow(0 0 20px rgba(193, 18, 31, 0.3))' }}
+          />
+        </motion.div>
+
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
@@ -22,12 +36,9 @@ export default function Footer() {
         </motion.div>
 
         <div className="border-t border-soft-white/10 pt-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
-          <div className="flex items-center gap-3">
-            <Logo className="w-7 h-7" />
-            <span className="font-mono text-xs tracking-cinematic text-soft-white/60">
-              © {new Date().getFullYear()} SINISTER STUDIOS · ALL RIGHTS RESERVED
-            </span>
-          </div>
+          <span className="font-mono text-xs tracking-cinematic text-soft-white/60">
+            © {new Date().getFullYear()} SINISTER STUDIOS · ALL RIGHTS RESERVED
+          </span>
 
           <div className="flex items-center gap-6 font-mono text-[10px] uppercase tracking-cinematic text-soft-white/40">
             <span>EST. 2023</span>

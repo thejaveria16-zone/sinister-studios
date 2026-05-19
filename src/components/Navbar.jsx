@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { Menu, X } from 'lucide-react'
-import Logo from './Logo'
+import logoImg from '../assets/logo/sinister-logo.png'
 
 const navItems = [
   { label: 'Films', href: '#films' },
@@ -26,21 +26,23 @@ export default function Navbar() {
       initial={{ y: -100, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 1.2, delay: 0.6, ease: [0.16, 1, 0.3, 1] }}
-      className={`fixed top-0 left-0 right-0 z-[90] transition-all duration-500 ${
-        scrolled ? 'glass py-3' : 'py-6 bg-transparent'
-      }`}
+      className={`fixed top-0 left-0 right-0 z-[90] transition-all duration-500 ${scrolled ? 'glass py-3' : 'py-5 bg-transparent'}`}
     >
       <div className="max-w-7xl mx-auto px-6 md:px-10 flex items-center justify-between">
-        <a href="#hero" className="flex items-center gap-3 hover-target">
-          <Logo className="w-9 h-9" />
-          <span className="font-display text-xl tracking-cinematic text-soft-white">
+        <a href="#hero" className="flex items-center gap-3 hover-target group">
+          <img
+            src={logoImg}
+            alt="Sinister Studios"
+            className="w-12 h-12 md:w-14 md:h-14 object-contain transition-transform duration-500 group-hover:scale-110"
+            style={{ filter: 'drop-shadow(0 0 8px rgba(193, 18, 31, 0.4))' }}
+          />
+          <span className="font-display text-xl tracking-cinematic text-soft-white hidden sm:block">
             SINISTER<span className="text-crimson-glow ml-1">/</span>STUDIOS
           </span>
         </a>
 
-        {/* Desktop nav */}
         <ul className="hidden md:flex items-center gap-10">
-          {navItems.map((item, i) => (
+          {navItems.map((item) => (
             <li key={item.label}>
               <a
                 href={item.href}
@@ -53,7 +55,6 @@ export default function Navbar() {
           ))}
         </ul>
 
-        {/* Mobile toggle */}
         <button
           onClick={() => setOpen(!open)}
           className="md:hidden hover-target text-soft-white"
@@ -63,7 +64,6 @@ export default function Navbar() {
         </button>
       </div>
 
-      {/* Mobile menu */}
       {open && (
         <motion.div
           initial={{ opacity: 0, y: -20 }}
@@ -71,14 +71,13 @@ export default function Navbar() {
           className="md:hidden glass mt-3 mx-6 py-8 px-6 border-t border-crimson-glow/20"
         >
           <ul className="flex flex-col gap-6">
-            {navItems.map((item, i) => (
+            {navItems.map((item) => (
               <li key={item.label}>
                 <a
                   href={item.href}
                   onClick={() => setOpen(false)}
-                  className="font-display text-2xl tracking-cinematic text-soft-white/90 flex items-baseline gap-3"
+                  className="font-display text-2xl tracking-cinematic text-soft-white/90"
                 >
-                  <span className="text-crimson-glow font-mono text-xs">0{i + 1}</span>
                   {item.label}
                 </a>
               </li>

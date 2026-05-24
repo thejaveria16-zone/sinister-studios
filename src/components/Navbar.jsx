@@ -33,8 +33,7 @@ export default function Navbar() {
           <img
             src={logoImg}
             alt="Sinister Studios"
-            className="w-12 h-12 md:w-14 md:h-14 object-contain transition-transform duration-500 group-hover:scale-110"
-            style={{ filter: 'drop-shadow(0 0 8px rgba(193, 18, 31, 0.4))' }}
+            className="logo-blend w-12 h-12 md:w-14 md:h-14 object-contain transition-transform duration-500 group-hover:scale-110"
           />
           <span className="font-display text-xl tracking-cinematic text-soft-white hidden sm:block">
             SINISTER<span className="text-crimson-glow ml-1">/</span>STUDIOS

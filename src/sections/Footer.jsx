@@ -15,8 +15,7 @@ export default function Footer() {
           <img
             src={logoImg}
             alt="Sinister Studios"
-            className="w-32 md:w-40 object-contain"
-            style={{ filter: 'drop-shadow(0 0 20px rgba(193, 18, 31, 0.3))' }}
+            className="logo-blend w-32 md:w-40 object-contain"
           />
         </motion.div>
 
@@ -27,8 +26,7 @@ export default function Footer() {
           transition={{ duration: 1.5 }}
           className="text-center mb-12"
         >
-          <h2 className="font-display text-[clamp(3rem,16vw,16rem)] leading-[0.85] tracking-tight text-stroke-red opacity-50 select-none">
-            SINISTER
+          <h2 className="font-display text-[clamp(3rem,16vw,16rem)] leading-[0.85] tracking-tight text-stroke-red-thick opacity-70 select-none">            SINISTER
           </h2>
           <p className="font-editorial italic text-crimson-glow text-lg -mt-4">
             film your imaginations.

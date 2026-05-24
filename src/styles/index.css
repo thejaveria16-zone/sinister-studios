@@ -2,7 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-/* ===== ROOT ===== */
 :root {
   --color-black: #050505;
   --color-graphite: #121212;
@@ -28,18 +27,15 @@ body {
   cursor: none;
 }
 
-/* Hide cursor only on desktop where custom cursor active */
 @media (max-width: 768px) {
   body { cursor: auto; }
 }
 
-/* ===== SELECTION ===== */
 ::selection {
   background: var(--color-crimson);
   color: var(--color-white);
 }
 
-/* ===== SCROLLBAR ===== */
 ::-webkit-scrollbar {
   width: 6px;
 }
@@ -54,7 +50,6 @@ body {
   background: var(--color-crimson);
 }
 
-/* ===== FILM GRAIN OVERLAY ===== */
 .film-grain {
   position: fixed;
   top: 0;
@@ -69,7 +64,6 @@ body {
   animation: grain 8s steps(10) infinite;
 }
 
-/* ===== VIGNETTE ===== */
 .vignette {
   position: fixed;
   top: 0;
@@ -81,7 +75,6 @@ body {
   background: radial-gradient(ellipse at center, transparent 40%, rgba(0,0,0,0.6) 100%);
 }
 
-/* ===== CINEMATIC TEXT EFFECTS ===== */
 .text-glow-red {
   text-shadow:
     0 0 10px rgba(193, 18, 31, 0.5),
@@ -99,7 +92,21 @@ body {
   color: transparent;
 }
 
-/* ===== GLITCH EFFECT ===== */
+/* Thicker, more visible red stroke for STUDIOS */
+.text-stroke-red-thick {
+  -webkit-text-stroke: 3px rgba(193, 18, 31, 1);
+  color: transparent;
+  text-shadow:
+    0 0 30px rgba(193, 18, 31, 0.5),
+    0 0 60px rgba(193, 18, 31, 0.3);
+}
+
+@media (min-width: 768px) {
+  .text-stroke-red-thick {
+    -webkit-text-stroke: 4px rgba(193, 18, 31, 1);
+  }
+}
+
 .glitch {
   position: relative;
   display: inline-block;
@@ -146,7 +153,6 @@ body {
   75% { transform: translate(-2px, -2px); }
 }
 
-/* ===== CUSTOM CURSOR ===== */
 .cursor-dot {
   position: fixed;
   width: 8px;
@@ -183,7 +189,6 @@ body {
   background: rgba(193, 18, 31, 0.1);
 }
 
-/* ===== GLASS PANEL ===== */
 .glass {
   background: rgba(18, 18, 18, 0.4);
   backdrop-filter: blur(20px);
@@ -191,7 +196,6 @@ body {
   border: 1px solid rgba(245, 245, 245, 0.05);
 }
 
-/* ===== POSTER HOVER ===== */
 .poster-card {
   position: relative;
   overflow: hidden;
@@ -225,7 +229,6 @@ body {
   filter: brightness(1.1) contrast(1.05);
 }
 
-/* ===== RED PULSE ===== */
 .red-pulse {
   box-shadow: 0 0 0 0 rgba(193, 18, 31, 0.7);
   animation: redPulse 2s infinite;
@@ -237,7 +240,6 @@ body {
   100% { box-shadow: 0 0 0 0 rgba(193, 18, 31, 0); }
 }
 
-/* ===== MARQUEE ===== */
 .marquee {
   display: flex;
   overflow: hidden;
@@ -257,7 +259,12 @@ body {
   to { transform: translateX(calc(-100% - 3rem)); }
 }
 
-/* ===== UTILITY ===== */
+/* Logo blending - removes the black square edge */
+.logo-blend {
+  mix-blend-mode: screen;
+  filter: drop-shadow(0 0 12px rgba(193, 18, 31, 0.5));
+}
+
 .no-cursor {
   cursor: none !important;
 }
@@ -270,4 +277,13 @@ body {
   .section-padding {
     padding: 5rem 1.25rem;
   }
+}
+
+@keyframes grain {
+  0%, 100% { transform: translate(0, 0); }
+  10% { transform: translate(-5%, -5%); }
+  30% { transform: translate(3%, -8%); }
+  50% { transform: translate(-3%, 3%); }
+  70% { transform: translate(5%, 5%); }
+  90% { transform: translate(-8%, 1%); }
 }

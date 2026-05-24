@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { Play, ArrowDown } from 'lucide-react'
+import { ArrowDown } from 'lucide-react'
 import { useEffect, useState } from 'react'
 
 export default function Hero() {
@@ -21,7 +21,6 @@ export default function Hero() {
       id="hero"
       className="relative min-h-screen w-full overflow-hidden bg-matte-black flex items-center justify-center"
     >
-      {/* Ambient red lighting follows mouse */}
       <div
         className="absolute inset-0 pointer-events-none transition-opacity duration-500"
         style={{
@@ -29,20 +28,16 @@ export default function Hero() {
         }}
       />
 
-      {/* Static red glow bottom */}
       <div className="absolute bottom-0 left-0 right-0 h-1/2 bg-gradient-to-t from-blood-red/10 to-transparent pointer-events-none" />
 
-      {/* Top vignette */}
       <div className="absolute top-0 left-0 right-0 h-1/3 bg-gradient-to-b from-matte-black to-transparent pointer-events-none" />
 
-      {/* Animated background lines */}
       <div className="absolute inset-0 opacity-[0.04] pointer-events-none">
         <div className="absolute inset-0" style={{
           backgroundImage: 'repeating-linear-gradient(90deg, transparent 0, transparent 80px, rgba(245,245,245,0.5) 80px, rgba(245,245,245,0.5) 81px)'
         }} />
       </div>
 
-      {/* Floating embers */}
       <div className="absolute inset-0 pointer-events-none">
         {Array.from({ length: 12 }).map((_, i) => (
           <motion.div
@@ -71,9 +66,7 @@ export default function Hero() {
         ))}
       </div>
 
-      {/* Content */}
       <div className="relative z-10 text-center px-6 max-w-6xl">
-        {/* Top label */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -87,7 +80,6 @@ export default function Hero() {
           <span className="h-px w-12 bg-crimson-glow/60" />
         </motion.div>
 
-        {/* Main title with stagger */}
         <motion.h1
           className="font-display text-soft-white leading-[0.85] tracking-tight"
           initial="hidden"
@@ -113,13 +105,12 @@ export default function Hero() {
               hidden: { opacity: 0, y: 60, filter: 'blur(10px)' },
               visible: { opacity: 1, y: 0, filter: 'blur(0px)', transition: { duration: 1.4, ease: [0.16, 1, 0.3, 1] } },
             }}
-            className="block text-[clamp(3.5rem,12vw,11rem)] tracking-tight text-stroke-red"
+            className="block text-[clamp(3.5rem,12vw,11rem)] tracking-tight text-stroke-red-thick"
           >
             STUDIOS
           </motion.span>
         </motion.h1>
 
-        {/* Tagline */}
         <motion.p
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
@@ -129,7 +120,7 @@ export default function Hero() {
           film your imaginations.
         </motion.p>
 
-        {/* CTAs */}
+        {/* CTAs - Watch Showreel hidden for now */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
@@ -137,17 +128,8 @@ export default function Hero() {
           className="flex flex-col sm:flex-row gap-5 justify-center mt-14"
         >
           <a
-            href="#showreel"
-            className="hover-target group relative inline-flex items-center justify-center gap-3 px-8 py-4 bg-crimson-glow text-soft-white font-body text-sm uppercase tracking-wider-x overflow-hidden red-pulse"
-          >
-            <Play size={16} fill="currentColor" />
-            <span className="relative z-10">Watch Showreel</span>
-            <span className="absolute inset-0 bg-blood-red translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
-          </a>
-
-          <a
             href="#films"
-            className="hover-target group relative inline-flex items-center justify-center gap-3 px-8 py-4 border border-soft-white/30 text-soft-white font-body text-sm uppercase tracking-wider-x hover:border-crimson-glow transition-colors duration-500"
+            className="hover-target group relative inline-flex items-center justify-center gap-3 px-10 py-4 border border-soft-white/30 text-soft-white font-body text-sm uppercase tracking-wider-x hover:border-crimson-glow hover:bg-crimson-glow/10 transition-all duration-500"
           >
             <span>Explore Films</span>
             <span className="inline-block group-hover:translate-x-1 transition-transform duration-300">→</span>
@@ -155,12 +137,26 @@ export default function Hero() {
         </motion.div>
       </div>
 
-      {/* Bottom corners — cinematic frame markers */}
       <div className="absolute bottom-6 left-6 hidden md:flex items-center gap-3 text-xs font-mono text-soft-white/40 tracking-wider-x z-10">
         <span className="w-2 h-2 bg-crimson-glow rounded-full animate-pulse" />
+        REC · 24.000 FPS
       </div>
 
-    
+      <div className="absolute bottom-6 right-6 hidden md:flex flex-col items-end gap-1 text-xs font-mono text-soft-white/40 tracking-wider-x z-10">
+        <span>S/N · 001</span>
+        <span>{new Date().getFullYear()}</span>
+      </div>
+
+      <motion.a
+        href="#about"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 2.5, duration: 1 }}
+        className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-soft-white/40 hover-target"
+      >
+        <span className="font-mono text-[10px] tracking-cinematic uppercase">Scroll</span>
+        <ArrowDown size={14} className="animate-bounce" />
+      </motion.a>
     </section>
   )
 }
